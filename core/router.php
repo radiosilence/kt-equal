@@ -20,7 +20,7 @@ class router
 
 	public function set_path( $path )
 	{
-		$path .= DIRSEP;
+		$path .= DSEP;
 		if( is_dir( $path ) == false )
 		{
 			throw new Exception( 'Invalid controller path: `' . $path . '`' );
