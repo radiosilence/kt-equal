@@ -3,7 +3,8 @@ class controller_index extends controller
 {
 	public function index( $args )
 	{
-		echo "hi!";
+		$template = new view( $this->registry );
+		$template->show( "home" );
 	}
 }
 ?>

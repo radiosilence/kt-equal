@@ -38,13 +38,13 @@ class view
 	{
 		if(!$bypasslanguages = 0 )
 		{
-			include SITE_PATH . 'languages' . DIRSEP . LOCALE . '.php';
+			include SITE_ROOT . 'languages' . DSEP . LOCALE . '.php';
 		}
-		$path = SITE_PATH . 'views' . DIRSEP . $name . '.php';
+		$path = SITE_ROOT . 'views' . DSEP . $name . '.php';
 
 		if( file_exists( $path ) == false )
 		{
-			trigger_error( 'Template `' . $name . '` does not exist.', E_USER_NOTICE );
+			trigger_error( 'Template `' . $path . '` does not exist.', E_USER_NOTICE );
 			return false;
 		}
 		// Load variables
