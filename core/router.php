@@ -42,7 +42,7 @@ class router
 		foreach( $args as $k => $v )
 		{
 			$x = explode( ':', $v );
-			if( strlen( $x [ 1 ] ) > 0 )
+			if( strlen( $x[ 1 ] ) > 0 )
 			{
 				$args[ $x[ 0 ] ] = $x[ 1 ];
 			}
@@ -50,8 +50,7 @@ class router
 			
 		}
 	
-		$file = str_replace( "_", DIRSEP, $file );
-		
+		$file = str_replace( "_", DSEP, $file ); 
 		# File available?
 		if( is_readable( $file ) == false )
 		{
@@ -91,7 +90,7 @@ class router
 			// Is there a dir with this path?
 			if( is_dir( $fullpath ) )
 			{
-				$cmd_path .= $part . DIRSEP;
+				$cmd_path .= $part . DSEP;
 				array_shift( $parts );
 				$class_name[] = $part;
 				continue;

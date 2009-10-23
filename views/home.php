@@ -4,7 +4,7 @@
 	<title>HCI Website</title>
 </head>
 <body>
-	<h1>Look at that fucking title</h1>
-	<p>Horse cock!</p>
+	<h1>Look at that title</h1>
+	<p>Blah blah</p>
 </body>
 </html>
