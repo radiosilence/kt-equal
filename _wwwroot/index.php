@@ -13,6 +13,11 @@ define( "CONFIG_PATH", SITE_ROOT . DSEP . "config" );
 define( "CORE_PATH", SITE_ROOT . DSEP . "core" );
 define( "HOST", $_SERVER[ "HTTP_HOST" ] );
 
+# If this is set to 1, searching will far faster but less det
+# -ailed. (Using mysql full text natural searching). This for
+# if there are many articles.
+define( "QUICK_SEARCH", 0 );
+
 function __autoload( $class_name )
 {
 	$filename = str_replace( "_", DSEP, strtolower( $class_name ) ) . '.php';

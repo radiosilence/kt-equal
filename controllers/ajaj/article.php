@@ -18,15 +18,32 @@ class controller_ajaj_article extends controller
 		$clr = $char_lim / 2;
 		
 		$db = $this->database();
-		$sth = $db->prepare( "
-			SELECT 	id,title, body
-			FROM	articles
-			WHERE	body LIKE :string
-			OR 	title LIKE :string
-			LIMIT 	20
-		");
+		
 		$term = strtolower( $args[ "q" ] );
-		$search = "%".$term."%";
+		
+		if( QUICK_SEARCH )
+		{
+			$sth = $db->prepare( "
+				SELECT 	id, title, body, MATCH(title, body) AGAINST(:string) AS score
+				FROM	articles
+				WHERE	MATCH(title, body) AGAINST (:string IN BOOLEAN MODE)
+				ORDER 	BY score DESC 
+				LIMIT 	20
+			");
+			$search = $term;
+		}
+		else
+		{
+			$sth = $db->prepare( "
+				SELECT 	id, title, body
+				FROM	articles
+				WHERE	title LIKE :string
+				OR	body LIKE :string
+				LIMIT 	20
+			");
+			$search = "%" . $term . "%";
+		}
+		
 		$sth->execute( array( ":string" => $search ) );
 //		$sth->debugDumpParams();
 		foreach( $sth->fetchAll() as $subject )
@@ -54,6 +71,14 @@ class controller_ajaj_article extends controller
 					"id"		=> $subject[ "id" ],
 					"title" 	=> $subject[ "title" ],
 					"excerpt" 	=> $excerpt,
+					"seo_url"	=> $seo_url->url,
+				);
+			}
+			else
+			{
+				$results[] = array( 
+					"id"		=> $subject[ "id" ],
+					"title"		=> $subject[ "title" ],
 					"seo_url"	=> $seo_url->url,
 				);
 			}
