@@ -19,8 +19,8 @@ class controller_article extends controller
 		$sth->execute( array( ":id" => $args[ "id" ] ) );
 		
 		$article = $sth->fetch();
-		$template->set( "title", $article[ "title" ] );
-		$template->set( "body", $article[ "body" ] );
+		$template->set( "title", utf8_encode( $article[ "title" ] ));
+		$template->set( "body", nl2br( utf8_encode( $article[ "body" ] )));
 		
 		$template->show( "article" );
 	}

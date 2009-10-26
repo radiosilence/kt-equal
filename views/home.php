@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>HCI Website</title>
 	<base href="http://<?php echo HOST?><?php echo BASE_HREF?>/">
 	<link rel="stylesheet" href="css_lib/screen.css" type="text/css" />
@@ -20,12 +21,12 @@
 				$.each( data, function( i, item ){
 					if( item["excerpt"] )
 					{
-					list.append("<li><h4><a href=\"articles/"+item["seo_url"]+"\" class=\"title\">"+item["title"]+"</a></h4>"+
+					list.append("<li><h4><a href=\"articles/"+item["seo_url"]+"#s:"+term+"\" class=\"title\">"+item["title"]+"</a></h4>"+
 						"<blockquote>\u201C"+item["excerpt"]+"\u201D</blockquote></li>");	
 					}
 					else
 					{
-					list.append("<li><h4><a href=\"articles/"+item["seo_url"]+"\" class=\"title\">"+item["title"]+"</a></h4></li>");
+					list.append("<li><h4><a href=\"articles/"+item["seo_url"]+"#s:"+term+"\" class=\"title\">"+item["title"]+"</a></h4></li>");
 					}
 					item["excerpt"] =  null;
 					
