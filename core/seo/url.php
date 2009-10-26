@@ -10,10 +10,10 @@ class seo_url
 	private function processString( $string )
 	{
 		$a = array( 
-			" "
+			" ", "?", "!", "&", "_", ":", "#",
 		);
 		$b = array( 
-			"-"
+			"-", null, null, null, "-", null, null,
 		);
 		
 		$string = str_replace( $a, $b, strtolower( $string ) );
