@@ -43,7 +43,7 @@ class controller_ajaj_article extends controller
 		}
 		else if( preg_match( '/(.{0,' . $clr . '})(' . $term . ')(.{0,' . $clr . '})/mi', $subject[ "body" ], $regs ) )
 		{
-			$excerpt = utf8_encode( htmlentities( ltrim( $regs[ 1 ] ) ) )
+			$excerpt = utf8_encode( "&hellip;" . htmlentities( ltrim( $regs[ 1 ] ) ) )
 				. "<span class=\"term\">" . $regs[ 2 ] . "</span>"
 				. utf8_encode( htmlentities( rtrim( $regs[ 3 ] ) ) . "&hellip;" );
 			

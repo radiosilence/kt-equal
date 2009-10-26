@@ -11,6 +11,7 @@ define( "SITE_ROOT", realpath( dirname( __FILE__ ) . DSEP . '..' . DSEP ) . DSEP
 define( "BASE_HREF", preg_replace( "/(.*?)\/index.php/", "$1", $_SERVER[ 'PHP_SELF' ] ) );
 define( "CONFIG_PATH", SITE_ROOT . DSEP . "config" );
 define( "CORE_PATH", SITE_ROOT . DSEP . "core" );
+define( "HOST", $_SERVER[ "HTTP_HOST" ] );
 
 function __autoload( $class_name )
 {
