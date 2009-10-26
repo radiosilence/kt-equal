@@ -30,28 +30,33 @@ class controller_ajaj_article extends controller
 		$sth->execute( array( ":string" => $search ) );
 //		$sth->debugDumpParams();
 		foreach( $sth->fetchAll() as $subject )
-		if( preg_match( '/(.{0,' . $clr . '})(' . $term . ')(.{0,' . $clr . '})/mi', $subject[ "title" ], $regs ) )
 		{
-			$title = utf8_encode( htmlentities( ltrim( $regs[ 1 ] ) ) )
-				. "<span class=\"title_term\">" . $regs[ 2 ] . "</span>"
-				. utf8_encode( htmlentities( rtrim( $regs[ 3 ] ) ) );
-			$titles[] = array(
-				"id"		=> $subject[ "id" ],
-				"title" 	=> $title,
-				"excerpt"	=> "",
-			);
-		}
-		else if( preg_match( '/(.{0,' . $clr . '})(' . $term . ')(.{0,' . $clr . '})/mi', $subject[ "body" ], $regs ) )
-		{
-			$excerpt = utf8_encode( "&hellip;" . htmlentities( ltrim( $regs[ 1 ] ) ) )
-				. "<span class=\"term\">" . $regs[ 2 ] . "</span>"
-				. utf8_encode( htmlentities( rtrim( $regs[ 3 ] ) ) . "&hellip;" );
-			
-			$results[] = array(
-				"id"		=> $subject[ "id" ],
-				"title" 	=> $subject[ "title" ],
-				"excerpt" 	=> $excerpt
-			);
+			$seo_url = new seo_url( $subject );
+			if( preg_match( '/(.{0,' . $clr . '})(' . $term . ')(.{0,' . $clr . '})/mi', $subject[ "title" ], $regs ) )
+			{
+				$title = utf8_encode( htmlentities( ltrim( $regs[ 1 ] ) ) )
+					. "<span class=\"title_term\">" . $regs[ 2 ] . "</span>"
+					. utf8_encode( htmlentities( rtrim( $regs[ 3 ] ) ) );
+				$titles[] = array(
+					"id"		=> $subject[ "id" ],
+					"title" 	=> $title,
+					"excerpt"	=> "",
+					"seo_url"	=> $seo_url->url,
+				);
+			}
+			else if( preg_match( '/(.{0,' . $clr . '})(' . $term . ')(.{0,' . $clr . '})/mi', $subject[ "body" ], $regs ) )
+			{
+				$excerpt = utf8_encode( "&hellip;" . htmlentities( ltrim( $regs[ 1 ] ) ) )
+					. "<span class=\"term\">" . $regs[ 2 ] . "</span>"
+					. utf8_encode( htmlentities( rtrim( $regs[ 3 ] ) ) . "&hellip;" );
+				
+				$results[] = array(
+					"id"		=> $subject[ "id" ],
+					"title" 	=> $subject[ "title" ],
+					"excerpt" 	=> $excerpt,
+					"seo_url"	=> $seo_url->url,
+				);
+			}
 		}
 		if( is_array( $titles ))
 		{

@@ -8,8 +8,11 @@
 	<script type="text/javascript" src="js_lib/jquery-1.3.2.js"></script>
 	<script type="text/javascript">
 	$(document).ready(function() {
-		$( "#article_search" ).keyup(function(e){
-			var term = $(this).attr( "value" );
+		searchUpdate();
+		$( "#article_search" ).keyup( searchUpdate );
+		
+		function searchUpdate(){
+			var term = $( "#article_search" ).attr( "value" );
 			$( "#term" ).text( term );
 			$.getJSON( "ajaj/article/search/q:"+term, function( data ){
 				var list = $("#results").html('<ul></ul>').find('ul');
@@ -28,7 +31,7 @@
 					
 				});
 			});
-		});
+		}
 	});
 
 	</script>
