@@ -36,7 +36,7 @@ abstract class controller
 		$config_file 	= $config_file ? $config_file : "database";
 		if( !$config_db )
 		{
-			$conf_path =  SITE_PATH . "configuration/" . $config_file . ".php";
+			$conf_path =  CONFIG_PATH . DSEP . $config_file . ".php";
 			if( file_exists( $conf_path ))
 			{
 				include $conf_path;

@@ -1,4 +1,4 @@
 RewriteEngine on
 
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(.+?)(\.html)?$ index.php?route=$1 [L,QSA]
+RewriteRule ^(.+?)(\.html)?$ index.php?route=$1
