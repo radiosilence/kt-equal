@@ -7,12 +7,24 @@
 	<link rel="stylesheet" href="css_lib/screen.css" type="text/css" />
 	<link rel="stylesheet" href="css_lib/plugins/fancy-type/screen.css" type="text/css" media="screen, projection">
 	<script type="text/javascript" src="js_lib/jquery-1.3.2.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function() {
+		var myFile = document.location.toString();
+		
+		if( myFile.match('#') )
+		{ 
+			var myAnchor = myFile.split('#')[1];
+			$( "#search_link" ).attr( "href", "index#"+myAnchor );
+		}
+
+	});
+	</script>
 </head>
 <body>
     <div class="container">
 	<h1><?php echo $title?></h1>
 	<hr />
-	<p><a href="index#s:blah">&lt;&lt; Back</a></p>
+	<p><a href="#" id="search_link">&lt;&lt; Return to Search</a></p>
 	<?php echo $body ?>
     </div>
 </body>

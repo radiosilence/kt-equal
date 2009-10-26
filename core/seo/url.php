@@ -16,7 +16,7 @@ class seo_url
 			"-"
 		);
 		
-		$string = str_replace( $a, $b, ucwords( $string ) );
+		$string = str_replace( $a, $b, strtolower( $string ) );
 		return $string;
 	}
 }
