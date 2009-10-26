@@ -1,0 +1,58 @@
+a {
+	color: #c82222;
+}
+
+p, li, h1, h2, h3, h4, h5, h6 {
+	font-family: "Goudy Old Style",  "Adobe Garamond Pro", serif;
+}
+p, li {
+	font-size: 12pt;
+}
+h1 {
+	margin-top: 20px;
+}
+
+#results h6 a {
+	font-size: 12pt;
+	font-weight: bold;
+}
+
+#results blockquote {
+	margin: 0px;
+	padding: 0px;
+}
+
+#results li, #results ul {
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+}
+
+#results {
+
+}
+	
+.term {
+	background-color: #eee;
+	color: black;
+	border: 1px solid #ccc;
+}
+.title_term {
+	background-color: #faa;
+	border: 1px solid #f88;
+	color: #c00;
+	text-decoration: underline;
+}
+.title {
+	font-weight: bold;
+	font-size: 12pt;
+}
+
+.articleinfo {
+	font-style: italic;
+	font-size: 12pt;
+}
+
+.author {
+	font-weight: bold;
+}
