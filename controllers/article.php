@@ -10,7 +10,7 @@ class controller_article extends controller
 		$template = new view( $this->registry );
 		$db = $this->database();
 		$sth = $db->prepare( "
-			SELECT 	id, title, body
+			SELECT 	id, title, body, author, date, publisher
 			FROM 	articles
 			WHERE	id = :id
 			LIMIT 	1
@@ -20,8 +20,14 @@ class controller_article extends controller
 		
 		$article = $sth->fetch();
 		$template->set( "title", utf8_encode( $article[ "title" ] ));
-		$template->set( "body", nl2br( utf8_encode( $article[ "body" ] )));
+		$p = new markdown_parser;
 		
-		$template->show( "article" );
+		include( SITE_ROOT . DSEP . "definitions" . DSEP . "article.php" );
+		
+		$body_text = $p->transform( $article[ "body" ] );
+		$article_info = sprintf( HTML_ARTICLE_INFO, $article[ "author" ], $article[ "date" ], $article[ "publisher" ] );
+		$template->set( "body", sprintf( HTML_ARTICLE_BODY, $article_info, utf8_encode( $body_text ) ) );
+		
+		$template->show( "home" );
 	}
 }

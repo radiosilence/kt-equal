@@ -14,7 +14,7 @@ class controller_ajaj_article extends controller
 			return 0;
 		}
 		
-		$char_lim = 400;
+		$char_lim = 100;
 		$clr = $char_lim / 2;
 		
 		$db = $this->database();

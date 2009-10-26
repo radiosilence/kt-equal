@@ -2,10 +2,10 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>HCI Website</title>
+	<title><?php echo $title ?></title>
 	<base href="http://<?php echo HOST?><?php echo BASE_HREF?>/">
 	<link rel="stylesheet" href="css_lib/screen.css" type="text/css" />
-	<link rel="stylesheet" href="css_lib/plugins/fancy-type/screen.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="css_lib/hci1.css" type="text/css" />
 	<script type="text/javascript" src="js_lib/jquery-1.3.2.js"></script>
 	<script type="text/javascript">
 	$(document).ready(function() {
@@ -21,6 +21,7 @@
 				argz[v.split( ":" )[0]] = v.split( ":" )[1];
 			});
 			$( "#article_search" ).attr( "value", argz[ "s" ] );
+			$( "#search_link" ).attr( "href", "index#s:"+argz[ "s" ] );
 		}
 
 		searchUpdate();
@@ -36,12 +37,12 @@
 				$.each( data, function( i, item ){
 					if( item["excerpt"] )
 					{
-					list.append("<li><h4><a href=\"articles/"+item["seo_url"]+"#s:"+term+"\" class=\"title\">"+item["title"]+"</a></h4>"+
+					list.append("<li><h6><a href=\"articles/"+item["seo_url"]+"#s:"+term+"\" class=\"title\">"+item["title"]+"</a></h6>"+
 						"<blockquote>\u201C"+item["excerpt"]+"\u201D</blockquote></li>");	
 					}
 					else
 					{
-					list.append("<li><h4><a href=\"articles/"+item["seo_url"]+"#s:"+term+"\" class=\"title\">"+item["title"]+"</a></h4></li>");
+					list.append("<li><h6><a href=\"articles/"+item["seo_url"]+"#s:"+term+"\" class=\"title\">"+item["title"]+"</a></h6></li>");
 					}
 					item["excerpt"] =  null;
 					
@@ -51,31 +52,21 @@
 	});
 
 	</script>
-	<style>
-	
-	.term {
-		background-color: yellow;
-		color: black;
-	}
-	.title_term {
-		background-color: yellow;
-	}
-	.title {
-		font-weight: bold;
-		font-size: 12pt;
-	}
-	</style>
 </head>
 <body>
     <div class="container">
-	<h1>Look at that title</h1>
+	<h1><?php echo $title ?></h1>
 	<hr />
-	<h2>Search</h2>
-	<p><label for="article_search">Search Article</label><br/>
-		<input type="text" id="article_search" /></p>
-	<hr/>
-	<div id="results">
 	
+	<div class="span-15 prepend-1 colborder">	
+	<?php echo $body ?>
+
+	<p><a href="#" id="search_link">&lt;&lt; Return Home</a></p>
+	</div>
+	<div class="span-7 last">
+	<p><label for="article_search">Search Articles</label><br/>
+		<input type="text" id="article_search" /></p>
+	<div id="results"></div>
 	</div>
     </div>
 </body>
