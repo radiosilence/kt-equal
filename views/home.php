@@ -15,9 +15,12 @@
 		if( myFile.match('#') )
 		{ // the URL contains an anchor
 			// click the navigation item corresponding to the anchor
+			var argz = {};
 			var myAnchor = myFile.split('#')[1];
-			
-			$( "#article_search" ).attr( "value", myAnchor );
+			$.each( myAnchor.split( ";" ), function( k, v ){
+				argz[v.split( ":" )[0]] = v.split( ":" )[1];
+			});
+			$( "#article_search" ).attr( "value", argz[ "s" ] );
 		}
 
 		searchUpdate();
@@ -33,12 +36,12 @@
 				$.each( data, function( i, item ){
 					if( item["excerpt"] )
 					{
-					list.append("<li><h4><a href=\"articles/"+item["seo_url"]+"#"+term+"\" class=\"title\">"+item["title"]+"</a></h4>"+
+					list.append("<li><h4><a href=\"articles/"+item["seo_url"]+"#s:"+term+"\" class=\"title\">"+item["title"]+"</a></h4>"+
 						"<blockquote>\u201C"+item["excerpt"]+"\u201D</blockquote></li>");	
 					}
 					else
 					{
-					list.append("<li><h4><a href=\"articles/"+item["seo_url"]+"#"+term+"\" class=\"title\">"+item["title"]+"</a></h4></li>");
+					list.append("<li><h4><a href=\"articles/"+item["seo_url"]+"#s:"+term+"\" class=\"title\">"+item["title"]+"</a></h4></li>");
 					}
 					item["excerpt"] =  null;
 					

@@ -12,9 +12,14 @@
 		var myFile = document.location.toString();
 		
 		if( myFile.match('#') )
-		{ 
+		{
+			var argz = {};
 			var myAnchor = myFile.split('#')[1];
-			$( "#search_link" ).attr( "href", "index#"+myAnchor );
+			$.each( myAnchor.split( ";" ), function( k, v ){
+				argz[v.split( ":" )[0]] = v.split( ":" )[1];
+			});
+			console.log( argz );
+			$( "#search_link" ).attr( "href", "index#s:"+argz[ "s" ] );
 		}
 
 	});
