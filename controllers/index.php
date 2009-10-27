@@ -8,7 +8,7 @@ class controller_index extends controller
 		$sth = $db->prepare( "
 			SELECT		id, title, body, date_added, author, publisher, date
 			FROM		articles
-			ORDER BY	date_added
+			ORDER BY	date_added DESC
 			LIMIT		5
 		" );
 		
@@ -16,10 +16,11 @@ class controller_index extends controller
 		while( $article = $sth->fetch() )
 		{
 			$seo_url = new seo_url( $article );
+			$s = new markdown_smartypantstypographer();
 			$articles[] = array(
 				"id"		=> $article[ "id" ],
 				"title" 	=> $article[ "title" ],
-				"excerpt" 	=> utf8_encode( substr( $article[ "body" ], 0, 200 ) ) . "&hellip;",
+				"excerpt" 	=> $s->transform (utf8_encode( substr( $article[ "body" ], 0, 200 ) )). "&hellip;",
 				"seo_url" 	=> $seo_url->url,
 				"date_added"	=> date( "dS M", strtotime( $article[ "date_added" ] )),
 				"author"	=> $article[ "author" ],

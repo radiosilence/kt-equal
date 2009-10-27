@@ -28,7 +28,7 @@ class controller_ajaj_article extends controller
 				FROM	articles
 				WHERE	MATCH(title, body) AGAINST (:string IN BOOLEAN MODE)
 				ORDER 	BY score DESC 
-				LIMIT 	20
+				LIMIT 	10
 			");
 			$search = $term;
 		}
@@ -39,7 +39,7 @@ class controller_ajaj_article extends controller
 				FROM	articles
 				WHERE	title LIKE :string
 				OR	body LIKE :string
-				LIMIT 	20
+				LIMIT 	10
 			");
 			$search = "%" . $term . "%";
 		}

@@ -52,7 +52,7 @@ define( 'SMARTYPANTS_TAGS_TO_SKIP', 'pre|code|kbd|script|math');
 define( 'SMARTYPANTS_PARSER_CLASS', 'markdown_smartypantstypographer' );
 
 
-class markdown_smartypantstypographer extends SmartyPants_Parser {
+class markdown_smartypantstypographer extends markdown_smartypants {
 
 	# Options to specify which transformations to make:
 	var $do_comma_quotes      = 0;
