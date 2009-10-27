@@ -19,7 +19,7 @@ class controller_article extends controller
 		$sth->execute( array( ":id" => $args[ "id" ] ) );
 		
 		$article = $sth->fetch();
-		$template->set( "page_title", "HCI Project 1" );
+		$template->set( "page_title", "Look At That F***ing Title" );
 		$template->set( "title", utf8_encode( $article[ "title" ] ));
 		$p = new markdown_parser;
 		
@@ -28,7 +28,7 @@ class controller_article extends controller
 		$body_text = $p->transform( $article[ "body" ] );
 		$article_info = sprintf( HTML_ARTICLE_INFO, $article[ "author" ], $article[ "date" ], $article[ "publisher" ] );
 		$template->set( "info", $article_info );
-		$template->set( "body", utf8_encode( $body_text ) );
+		$template->set( "body", utf8_encode( sprintf( HTML_ARTICLE_BODY, $body_text ) ) );
 		
 		$template->show( "home" );
 	}

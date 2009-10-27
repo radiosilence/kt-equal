@@ -45,7 +45,7 @@ class controller_ajaj_article extends controller
 		}
 		
 		$sth->execute( array( ":string" => $search ) );
-//		$sth->debugDumpParams();
+
 		foreach( $sth->fetchAll() as $subject )
 		{
 			$seo_url = new seo_url( $subject );
