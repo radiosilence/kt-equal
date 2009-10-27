@@ -22,6 +22,7 @@
 			});
 			$( "#article_search" ).attr( "value", argz[ "s" ] );
 			$( "#search_link" ).attr( "href", "index#s:"+argz[ "s" ] );
+			$( "h1 a" ).attr( "href", "index#s:"+argz[ "s" ] );
 		}
 
 		searchUpdate();
@@ -56,7 +57,7 @@
 <body>
     <div class="container">
     
-	<h1><?php echo $page_title ?></h1>
+	<h1><a href="home"><?php echo $page_title ?></a></h1>
 	<hr />
 	<div class="span-14 prepend-1 colborder">
 		<h2><?php echo $title?></h2>
