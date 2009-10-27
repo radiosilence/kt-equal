@@ -3,17 +3,39 @@ a {
 }
 
 p, li, h1, h2, h3, h4, h5, h6 {
-	font-family: "Goudy Old Style",  "Adobe Garamond Pro", serif;
+	font-family: "Excelsior LT Std", "Goudy Old Style", "Minion Pro", serif;
 }
-p, li {
-	font-size: 12pt;
+
+p {
+	font-size: 11pt;
 }
+li {
+	font-size: 10pt;
+}
+
+#body p {
+	text-align: justify;
+}
+
+#info p {
+	font-style: italic;
+	font-size: 14pt;
+	text-align: center;	
+}
+
 h1 {
 	margin-top: 20px;
+	font-size: 32pt;
+	text-align: center;
+}
+h2 {
+	margin-top: 20px;
+	font-size: 22pt;
+	text-align: center;
 }
 
 #results h6 a {
-	font-size: 12pt;
+	font-size: 10pt;
 	font-weight: bold;
 }
 
@@ -28,8 +50,10 @@ h1 {
 	list-style-type: none;
 }
 
-#results {
-
+#results li {
+	border-bottom: 1px solid #eee;
+	padding-bottom: 5px;
+	margin-bottom: 2px;
 }
 	
 .term {
@@ -38,18 +62,13 @@ h1 {
 	border: 1px solid #ccc;
 }
 .title_term {
-	background-color: #faa;
-	border: 1px solid #f88;
+	background-color: #fdd;
+	border: 1px solid #faa;
 	color: #c00;
 	text-decoration: underline;
 }
 .title {
 	font-weight: bold;
-	font-size: 12pt;
-}
-
-.articleinfo {
-	font-style: italic;
 	font-size: 12pt;
 }
 
