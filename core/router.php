@@ -50,12 +50,14 @@ class router
 			
 		}
 	
-		$file = str_replace( "_", DSEP, $file ); 
+		$co = $controller;
+		$cn = str_replace( "_", DSEP, $controller );	
+		$file = str_replace( $co, $cn, $file ); 
+
 		# File available?
 		if( is_readable( $file ) == false )
 		{
-			$this->delegate( "error/code:404" );
-			die();
+			die( "404" );
 		}
 		# Include the file
 		include ( $file );

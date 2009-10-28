@@ -15,10 +15,17 @@ $(document).ready(function() {
 	
 	function loadAnchor( anc )
 	{
-		$.each( anc.split( ";" ), function( k, v ){
-			argz[v.split( ":" )[0]] = v.split( ":" )[1];
-		});
-		return argz;
+		if( anc )
+		{
+			$.each( anc.split( ";" ), function( k, v ){
+				argz[v.split( ":" )[0]] = v.split( ":" )[1];
+			});
+			return argz;
+		}
+		else
+		{
+			return {};
+		}
 	}
 	
 	function saveAnchor( argz )
