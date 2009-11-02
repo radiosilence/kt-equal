@@ -13,6 +13,7 @@ class controller_index extends controller
 		" );
 		
 		$sth->execute();
+		
 		while( $article = $sth->fetch() )
 		{
 			$seo_url = new seo_url( $article );
@@ -28,12 +29,12 @@ class controller_index extends controller
 				"date"		=> $article[ "date" ]
 			);
 		}
-		$template = new view( $this->registry );
 		
-		$template->set( "articles", $articles );
-		$template->set( "page_title", "Look At That F***ing Title" );
-		$template->set( "subview", "home_body" );
-		$template->show( "home" );
+		$tpl = new view( $this->registry );
+		$tpl->set( "articles", $articles );
+		$tpl->set( "page_title", "Look At That F***ing Title" );
+		$tpl->set( "subview", "home_body" );
+		$tpl->show( "home" );
 	}
 }
 ?>
