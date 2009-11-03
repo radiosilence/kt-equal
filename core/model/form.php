@@ -18,7 +18,7 @@ class model_form
 	
 	public function __construct( $model, $action, $id = -1, $custom = 0 )
 	{
-		include( SITE_PATH . DIRSEP . "res" . DIRSEP . "form.php" );
+		require( SITE_ROOT . DSEP . "res" . DSEP . "form.php" );
 		$this->model = $model;
 		$this->form_output = array(
 			"title" => $model->nice_name,
@@ -112,6 +112,7 @@ class model_form
 			$this->new_values = $data;
 		}
 		$this->traverse_layout( $l );
+		
 	}
 	
 	/**
@@ -119,9 +120,16 @@ class model_form
 	 */
 	public function save_all()
 	{
+		foreach( $this->layout as $tn => $table )
+		{
+			foreach( $table as $f )
+			{
+				$this->model->values[ $f ] = $this->new_values[ $f ];
+			}
+		}
+
 		$this->model->set_fields_to_save( $this->layout );
 		$this->model->save();
-
 		foreach( $this->extra_models as $extra_model )
 		{			
 			$extra_model->set_fields_to_save( $this->layout );
@@ -284,7 +292,7 @@ class model_form
 		}
 		else
 		{
-			$options[] = ;
+			$options[] = "";
 		}
 		return sprintf( RES_FORM_FIELD_SELECT,
 			$this->c_name,

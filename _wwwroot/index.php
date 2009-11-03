@@ -3,14 +3,15 @@
  * Basing the site's structure off of my cheapo framework, yay!
  */
 
-# Definitions
+define( "DEBUG", 0 );
 
+# Definitions
 define( "DSEP", DIRECTORY_SEPARATOR );
 define( "LOCALE", "en_GB" );
 define( "SITE_ROOT", realpath( dirname( __FILE__ ) . DSEP . '..' . DSEP ) . DSEP );
 define( "BASE_HREF", preg_replace( "/(.*?)\/index.php/", "$1", $_SERVER[ 'PHP_SELF' ] ) );
 define( "CONFIG_PATH", SITE_ROOT . DSEP . "config" );
-define( "CORE_PATH", SITE_ROOT . DSEP . "core" );
+define( "CORE_PATH", SITE_ROOT . "core" );
 define( "HOST", $_SERVER[ "HTTP_HOST" ] );
 
 # If this is set to 1, searching will far faster but less det

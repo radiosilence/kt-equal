@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta charset="ISO-8859-1">
 	<title><?php echo $title ? $title . " | " : null; ?><?php echo $page_title ?></title>
 	<base href="http://<?php echo HOST?><?php echo BASE_HREF?>/">
-	<link rel="stylesheet" href="css_lib/screen.css" type="text/css" />
-	<link rel="stylesheet" href="css/hci1.css" type="text/css" />
+	<link rel="stylesheet" href="css_lib/screen.css" />
+	<link rel="stylesheet" href="css_lib/plugins/buttons/screen.css" />
+	<link rel="stylesheet" href="css/hci1.css" />
 	<script type="text/javascript" src="js_lib/jquery-1.3.2.js"></script>
 	<script type="text/javascript" src="js/home.js"></script>
+	<!--[if IE]>
+	<script type="text/javascript" src="js_lib/html5enable.js"></script>
+	<![endif]-->
 </head>
 <body>
     <div class="container">

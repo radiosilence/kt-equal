@@ -38,18 +38,20 @@ class router
 		}
 		
 		$this->get_controller( $file, $controller, $action, $args, $route );
-		
+
 		foreach( $args as $k => $v )
 		{
 			$x = explode( ':', $v );
-			if( strlen( $x[ 1 ] ) > 0 )
+			if( count( $x ) > 1 )
 			{
-				$args[ $x[ 0 ] ] = $x[ 1 ];
+				if( strlen( $x[ 1 ] ) > 0 )
+				{
+					$args[ $x[ 0 ] ] = $x[ 1 ];
+				}
 			}
 			unset( $args[ $k ] );
 			
 		}
-	
 		$co = $controller;
 		$cn = str_replace( "_", DSEP, $controller );	
 		$file = str_replace( $co, $cn, $file ); 

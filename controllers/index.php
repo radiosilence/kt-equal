@@ -20,7 +20,7 @@ class controller_index extends controller
 			$articles[] = array(
 				"id"		=> $article[ "id" ],
 				"title" 	=> $article[ "title" ],
-				"excerpt" 	=> $s->transform (utf8_encode( substr( $article[ "body" ], 0, 200 ) )). "&hellip;",
+				"excerpt" 	=> $s->transform ( substr( $article[ "body" ], 0, 200 ) ). "&hellip;",
 				"seo_url" 	=> $seo_url->url,
 				"date_added"	=> date( "dS M", strtotime( $article[ "date_added" ] )),
 				"author"	=> $article[ "author" ],

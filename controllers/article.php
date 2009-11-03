@@ -20,7 +20,7 @@ class controller_article extends controller
 		
 		$article = $sth->fetch();
 		$template->set( "page_title", "Look At That F***ing Title" );
-		$template->set( "title", utf8_encode( $article[ "title" ] ));
+		$template->set( "title", $article[ "title" ] );
 		$p = new markdown_parser;
 		$s = new markdown_smartypantstypographer;
 		include( SITE_ROOT . DSEP . "definitions" . DSEP . "article.php" );
@@ -28,7 +28,7 @@ class controller_article extends controller
 		$body_text = $p->transform( $s->transform( $article[ "body" ] ) );
 		$article_info = sprintf( HTML_ARTICLE_INFO, $article[ "author" ], $article[ "date" ], $article[ "publisher" ] );
 		$template->set( "info", $article_info );
-		$template->set( "body", utf8_encode( sprintf( HTML_ARTICLE_BODY, $body_text ) ) );
+		$template->set( "body", sprintf( HTML_ARTICLE_BODY, $body_text ) );
 		
 		$template->show( "home" );
 	}

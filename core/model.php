@@ -51,11 +51,16 @@ abstract class model
 	public static function create( $class, $id = 0 )
 	{		
 		if(DEBUG) FB::send( $class, "Creating" );
+
 		if( !in_array( $class, self::$loaded_classes ) )
 		{
-			if( include SITE_PATH . "models" . DIRSEP . $class . ".php" )
+			if( include SITE_ROOT . "models" . DSEP . $class . ".php" )
 			{
 				self::$loaded_classes[] = $class;
+			}
+			else
+			{
+				die( "Model loading failed of " . $class . "\n" );
 			}
 		}
 		
@@ -67,6 +72,7 @@ abstract class model
 		}
 		else
 		{
+
 			$model = new $class( self::$db );
 			if( $id )
 			{
@@ -81,8 +87,8 @@ abstract class model
 	 */
 	public function save()
 	{
+		echo "<pre>";
 		$t = $this;
-//		echo "SAVING $this->name #$this->id";
 		if(DEBUG) FB::send( $this, "Saving model" );
 		$db = self::$db;
 		
@@ -93,33 +99,36 @@ abstract class model
 			WHERE	" . $t->primary_key . " = :id
 			LIMIT	1
 		" );
-		
-		$binds = array( 
-			":id"				=> $t->id
-		);
-		
-		$sth->execute( $binds );
-		$sth->debugDumpParams();
-		die( "not implemented " );
+		echo "fts:\n";
+		$sth->execute( array( ":id" => $t->id ) );
 		# If more than 0 rows, we're updating.
-		$updating = $result->num_rows > 0 ? 1 : 0;
-		die();
+		$updating = $sth->rowCount() > 0 ? 1 : 0;
 		
 		if( $updating )
 		{
-			foreach( $t->definition[ "tables" ] as $table_name => $table )
+			foreach( $t->definition[ "tables" ] as $tn => $table )
 			{
-				# Update query
-				$db->build_query()
-					->update( $table_name );
+				foreach( $t->fields_to_save[ $tn ] as $field )
+				{
+					$field = str_replace( $tn . ".", null, $field );
+					$fields[ $tn ][] = $field . " = :" . $field;
+					$params[ $tn ][ "params" ][ $field ] = $t->values[ $field ]; 
+				}
+				$query[ $tn ]  = "UPDATE " . $tn . " SET\n";
+				$query[ $tn ] .= implode( ",\n", $fields[ $tn ] );
+				$query[ $tn ] .= " WHERE id = :id LIMIT 1";
 				
 			}
+			$query = implode( ";\n\n", $query );
 		}
 		else
 		{
+			echo "INSERT";
 			# Insert query
 		}
-
+		
+		print_r ( $query );
+		echo "</pre>";
 	}
 	
 	/**
@@ -196,7 +205,7 @@ abstract class model
 			$field = count( $inputs ) == 2 ? $inputs[ 1 ] : $inputs[ 0 ];
 			if( is_array( $this->definition[ "tables" ][ $table ][ $field ] ))
 			{
-				$this->fields_to_save[] = $input;
+				$this->fields_to_save[ $table ][] = $input;
 			}
 		}
 	}

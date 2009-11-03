@@ -2,10 +2,9 @@ a {
 	color: #c82222;
 }
 
-p, li, h1, h2, h3, h4, h5, h6 {
-	font-family:  "Times LT Std", "Times New Roman", "Goudy Old Style", "Minion Pro", "Adobe Garamond Pro", Garamond, Georgia, serif;
+p, li, h1, h2, h3, h4, h5, h6, form, fieldset, legend, label, input, textarea {
+	font-family:   "Times LT Std", "Times New Roman", "Goudy Old Style", "Minion Pro", "Adobe Garamond Pro", Garamond, Georgia, serif;
 }
-
 p {
 	font-size: 12pt;
 }

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 27, 2009 at 05:36 PM
+-- Generation Time: Oct 29, 2009 at 12:59 AM
 -- Server version: 5.1.36
 -- PHP Version: 5.3.0
 
@@ -29,14 +29,14 @@ CREATE TABLE IF NOT EXISTS `articles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) CHARACTER SET latin1 NOT NULL,
   `body` text CHARACTER SET latin1 NOT NULL,
-  `author` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `date` varchar(31) COLLATE utf8_unicode_ci NOT NULL,
-  `publisher` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `author` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `date` varchar(31) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `publisher` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `date_added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `title` (`title`),
   FULLTEXT KEY `body` (`body`,`title`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=10 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `articles`
