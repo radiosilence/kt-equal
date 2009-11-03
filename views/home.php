@@ -39,6 +39,7 @@
 		<input type="text" id="article_search" /></p>
 	<div id="results"></div>
 	</div>
+	Karl added this!
     </div>
 </body>
 </html>
