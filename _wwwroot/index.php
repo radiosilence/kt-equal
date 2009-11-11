@@ -5,12 +5,12 @@
 
 # Definitions
 
-define( "DSEP", DIRECTORY_SEPARATOR );
+define( "DIRSEP", DIRECTORY_SEPARATOR );
 define( "LOCALE", "en_GB" );
-define( "SITE_ROOT", realpath( dirname( __FILE__ ) . DSEP . '..' . DSEP ) . DSEP );
+define( "SITE_ROOT", realpath( dirname( __FILE__ ) . DIRSEP . '..' . DIRSEP ) . DIRSEP );
 define( "BASE_HREF", preg_replace( "/(.*?)\/index.php/", "$1", $_SERVER[ 'PHP_SELF' ] ) );
-define( "CONFIG_PATH", SITE_ROOT . DSEP . "config" );
-define( "CORE_PATH", SITE_ROOT . DSEP . "core" );
+define( "CONFIG_PATH", SITE_ROOT . DIRSEP . "config" );
+define( "CORE_PATH", SITE_ROOT . DIRSEP . "core" );
 define( "HOST", $_SERVER[ "HTTP_HOST" ] );
 
 # If this is set to 1, searching will far faster but less det
@@ -20,8 +20,8 @@ define( "QUICK_SEARCH", 0 );
 
 function __autoload( $class_name )
 {
-	$filename = str_replace( "_", DSEP, strtolower( $class_name ) ) . '.php';
-	$file = CORE_PATH . DSEP . $filename;
+	$filename = str_replace( "_", DIRSEP, strtolower( $class_name ) ) . '.php';
+	$file = CORE_PATH . DIRSEP . $filename;
 	
 	if( !file_exists( $file ))
 	{
