@@ -284,7 +284,7 @@ class model_form
 		}
 		else
 		{
-			$options[] = ;
+			$options[] = RES_FORM_FIELD_SELECT_NO;;
 		}
 		return sprintf( RES_FORM_FIELD_SELECT,
 			$this->c_name,
