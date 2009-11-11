@@ -196,18 +196,24 @@ class session
 		);
 		$sth->execute( array( "user_id" => $user_id, "ipv4" => $_SERVER[ "REMOTE_ADDR" ] ));
 
-		$db->build_query()
-			->insert( "sessions", array( "sid", "tok", "ipv4", "user_id" ) )
-			->values( array( $sid
-				, $tok
-				, $_SERVER[ 'REMOTE_ADDR' ]
-				, $user_id )
-			);
-		$db->print_query();
-		die();
-		$stmt = $this->db->prepare();
 
-		if( $stmt->execute() )
+		$sth2 = $db->prepare( "
+			INSERT INTO sessions (
+				sid, tok, ipv4, user_id
+			)
+			VALUES (
+				:sid, :tok, :ipv4, :user_id
+			)
+		" );
+		
+		$res = $sth2->execute( array(
+			":sid" 		=> $sid,
+			":tok"		=> $tok,
+			":ipv4"		=> $_SERVER[ "REMOTE_ADDR" ],
+			":user_id"	=> $user_id 
+		));
+		
+		if( $res )
 		{
 			$return = array( "sid" => $sid, "id" => $user_id, "tok" => $tok );
 		}
@@ -215,8 +221,7 @@ class session
 		{
 			$return = 0;
 		}
-
-		$stmt->close();
+		
 		return $return;
 	}
 
@@ -227,13 +232,18 @@ class session
 	public function destroy_session()
 	{
 		$db = $this->db;
-		$db->build_query()
-			->delete()
-			->from	( "sessions" )
-			->where	( "sid", $this->session )
-			->where	( "ipv4", $_SERVER[ 'REMOTE_ADDR' ] )
-			->where	( "tok", $this->tok );
-		$db->run_query( $result );
+		$sth = $db->prepare( "
+			DELETE FROM	sessions
+			WHERE		sid 	= :sid
+			AND		ipv4 	= :ipv4
+			AND		tok 	= :tok
+		");
+		
+		$sth->execute( array(
+			":sid"	=> $this->session,
+			":ipv4"	=> $_SERVER[ "REMOTE_ADDR" ]
+		));
+		
 		setcookie( "sid", "DEAD", time()-1, WWW_PATH . "/", null, false, true );
 		setcookie( "tok", "DEAD", time()-1, WWW_PATH . "/", null, false, true );
 		return 1;
