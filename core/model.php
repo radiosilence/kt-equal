@@ -5,19 +5,21 @@
 abstract class model
 {
 	# Database
-	private static $db;
+	private static $sdb;
 	# Array of loaded classes (to avoid double-include)
 	private static $loaded_classes = array();
 	
 	public $definition;
 	public $values;
-	public $name;
+	public $model_name;
 	public $nice_name;
 	public $primary_table;
+	public $primary_key;
 	public $id;
 	public $fields_to_save = array();
-	
-	abstract public function get_list( $string = null );
+	public $db;
+
+	abstract public function __construct();	
 	abstract public function default_form();
 	/**
 	 * The define function is where all we need to know about the model
@@ -37,43 +39,29 @@ abstract class model
 	 *	
 	 */
 	abstract protected function define();
-	
+
 	/**
-	 * Sets the static MODEL::$db.
+	 * Set overloader.
+	 */	
+	public function __set( $member, $value )
+	{
+		$this->values[ $member ] = $value;
+	}
+
+	/**
+	 * Get overloader.
+	 */	
+	public function __get( $member )
+	{
+		return $this->values[ $member ];
+	}
+
+	/**
+	 * Sets the static MODEL::$sdb.
 	 */
 	public static function set_db( $db )
 	{
-		self::$db = $db;
-	}
-	/**
-	 * Spawn an instance of a model.
-	 */
-	public static function create( $class, $id = 0 )
-	{		
-		if(DEBUG) FB::send( $class, "Creating" );
-		if( !in_array( $class, self::$loaded_classes ) )
-		{
-			if( include SITE_PATH . "models" . DIRSEP . $class . ".php" )
-			{
-				self::$loaded_classes[] = $class;
-			}
-		}
-		
-		$class = "models_" . $class;
-		
-		if( !self::$db )
-		{
-			if(DEBUG) FB::warn( "MODEL::\$db is not set." );	
-		}
-		else
-		{
-			$model = new $class( self::$db );
-			if( $id )
-			{
-				$model->load( $id );
-			}
-			return $model;
-		}	
+		self::$sdb = $db;
 	}
 	
 	/**
@@ -82,9 +70,8 @@ abstract class model
 	public function save()
 	{
 		$t = $this;
-//		echo "SAVING $this->name #$this->id";
 		if(DEBUG) FB::send( $this, "Saving model" );
-		$db = self::$db;
+		$db = self::$sdb;
 		
 		# Check to see if id exists..
 		$sth = $db->prepare( "
@@ -95,30 +82,56 @@ abstract class model
 		" );
 		
 		$binds = array( 
-			":id"				=> $t->id
+			":id"	=> $t->id
 		);
 		
 		$sth->execute( $binds );
-		$sth->debugDumpParams();
-		die( "not implemented " );
+
 		# If more than 0 rows, we're updating.
-		$updating = $result->num_rows > 0 ? 1 : 0;
-		die();
+		$updating = $sth->rowCount() > 0 ? 1 : 0;
 		
 		if( $updating )
 		{
 			foreach( $t->definition[ "tables" ] as $table_name => $table )
 			{
 				# Update query
-				$db->build_query()
-					->update( $table_name );
+				$sql = "UPDATE " . $table_name . " SET ";
+
+				foreach( $table as $field => $date )
+				{
+					$fields[]	= $field . " = :" . $field;
+					$binds[ ":" . $field ]	= $t->values[ $field ];
+				}
 				
+				$sql .= implode( ", ", $fields );
+				$sql .= " LIMIT 1";
+				
+				$sth = $db->prepare( $sql );
+				$sth->execute( $binds );
+						
 			}
 		}
 		else
 		{
-			# Insert query
-		}
+			foreach( $t->definition[ "tables" ] as $table_name => $table )
+			{
+				# Update query
+				$sql = "INSERT INTO " . $table_name . " VALUES ( ";
+
+				foreach( $table as $field => $date )
+				{
+					$fields[]		= ":" . $field;
+					$binds[ ":" . $field ]	= $t->values[ $field ] ? $t->values[ $field ] : "NULL";
+				}
+				
+				$sql .= implode( ", ", $fields );
+				$sql .= ")";
+				
+				$sth = $db->prepare( $sql );
+				$sth->execute( $binds );
+			}
+
+		}		
 
 	}
 	
@@ -129,9 +142,8 @@ abstract class model
 	{
 		# Shortcuts
 		$t = $this;
-		$db = self::$db;
-		
-		#Cycle through the fields, pulling them into a flat array $fields
+		$db = $this->db;
+		# Cycle through the fields, pulling them into a flat array $fields
 		foreach( $t->definition[ "tables" ] as $table_name => $table )
 		{
 			foreach( $table as $field_name => $field )
@@ -140,44 +152,42 @@ abstract class model
 				# is part of the primary table.
 				$fields[] = $table_name
 					. "." . $field_name
-					. " as '"
+					. " as "
 					. (
 						$table_name != $t->primary_table ?
 						$table_name . "." :
 						null
 					)
-					. $field_name . "'";
+					. $field_name . "";
 			}
 		}
 		
 		# Get the data for this id we're loading
-		foreach( $t->definition[ "joins" ] as $join )
+		if( is_array( $joins ) )
 		{
-			$b = explode( ".", $join[ 1 ] );
-			$joins .= "LEFT JOIN " . $b[ 0 ] . "
-				ON " . $join[ 0 ] . " = " . $join[ 1 ] . "\n";
+			foreach( $t->definition[ "joins" ] as $join )
+			{
+				$b = explode( ".", $join[ 1 ] );
+				$joins .= "LEFT JOIN " . $b[ 0 ] . "
+					ON " . $join[ 0 ] . " = " . $join[ 1 ] . "\n";
+			}
 		}
 		
-		/*$query = "
-			SELECT 	" . implode( ", ", $fields ) . "
-			FROM	" . $t->primary_table . "
-			" . $joins . "
-			WHERE " . $t->primary_key . " = :id
-		";*/
-		$sql = "
-			SELECT 	" . implode( ", ", $fields ) . "
-			FROM	" . $t->primary_table . "
-			" . $joins . "
-			WHERE " . $t->primary_key . " = :id
-		";
 		$binds = array(
-			":id"			=> $id
+			":id"	=> $id
 		);
 		
-		$sth = $db->prepare( $sql ) or print_r( $db->errorInfo() );
+		$sth = $db->prepare( "
+			SELECT 	" . implode( ", ", $fields ) . "
+			FROM	" . $t->primary_table . "
+			" . $joins . "
+			WHERE " . $t->primary_key . " = :id
+			LIMIT 1
+		" );
+		
 		$sth->execute( $binds );
-		$t->values = $sth->fetch();
-		$t->id = $id;
+		$t->values 	= $sth->fetch( PDO::FETCH_ASSOC );
+		$t->id 		= $id;
 	}
 	
 	public function set_fields_to_save( $input )
@@ -199,6 +209,14 @@ abstract class model
 				$this->fields_to_save[] = $input;
 			}
 		}
+	}
+	
+	/**
+	 * Get the sql for a model.
+	 */
+	public function schema()
+	{
+		
 	}
 	
 	/* Table definitions */
@@ -245,6 +263,7 @@ abstract class model
 	
 	/**
 	 * A one to one link on a key. Key will be the same as present table's.
+	 * Kind of stupid for new systems, designed to work with existing schema.
 	 */
 	protected function link_key( $field )
 	{

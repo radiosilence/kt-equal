@@ -10,17 +10,11 @@ class router
 {
 	private $registry;
 	private $path;
-	private $args = array(
-	);
-
-	public function __construct( $registry )
-	{
-		$this->registry = $registry;
-	}
+	private $args = array();
 
 	public function set_path( $path )
 	{
-		$path .= DSEP;
+		$path .= DIRSEP;
 		if( is_dir( $path ) == false )
 		{
 			throw new Exception( 'Invalid controller path: `' . $path . '`' );
@@ -51,7 +45,7 @@ class router
 		}
 	
 		$co = $controller;
-		$cn = str_replace( "_", DSEP, $controller );	
+		$cn = str_replace( "_", DIRSEP, $controller );	
 		$file = str_replace( $co, $cn, $file ); 
 
 		# File available?
@@ -92,7 +86,7 @@ class router
 			// Is there a dir with this path?
 			if( is_dir( $fullpath ) )
 			{
-				$cmd_path .= $part . DSEP;
+				$cmd_path .= $part . DIRSEP;
 				array_shift( $parts );
 				$class_name[] = $part;
 				continue;

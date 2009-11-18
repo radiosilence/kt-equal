@@ -1,4 +1,4 @@
-hci1.sublime-project
+*.sublime-project
 config/*.php
 !config/*sample.php
-
+core/*

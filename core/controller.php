@@ -9,17 +9,6 @@
 abstract class controller
 {
 	/**
-	 * Registry object.
-	 * @var registry
-	 */
-	protected $registry;
-
-	public function __construct( $registry )
-	{
-		$this->registry = $registry;
-	}
-
-	/**
 	 * Gets the database config, returns
 	 * a new database.
 	 * @return database database object
@@ -30,29 +19,33 @@ abstract class controller
 		{
 			die( "Arguments to controller::database must be passed as array." );
 		}
-		extract( $args );
-		$type 			= $type ? $type : "pdo";
-		$name 			= $name ? $name : null;
-		$config_file 	= $config_file ? $config_file : "database";
-		if( !$config_db )
-		{
-			$conf_path =  CONFIG_PATH . DSEP . $config_file . ".php";
-			if( file_exists( $conf_path ))
-			{
-				include $conf_path;
-			}
-			else
-			{
-				die( "Database requested but no database config available." );
-			}
-		}
 		
-		if( $args[ "name" ] && $this->registry->get( $name ) )
+		extract( $args );
+		
+		$type 		= $type 	? $type 	: "pdo";
+		$name 		= $name 	? $name 	: "db";
+		$config_file 	= $config_file 	? $config_file 	: "database";
+		
+		if( $args[ "name" ] && REGISTRY::get( $name ) )
 		{
-			return $this->registry->get( $name );
+			return REGISTRY::get( $name );
 		}
 		else
-		{
+		{				
+			if( !$config_db )
+			{
+				$conf_path =  CONFIG_PATH . DIRSEP . $config_file . ".php";
+		
+				if( file_exists( $conf_path ))
+				{
+					include $conf_path;
+				}
+				else
+				{
+					die( "Database requested but no database config available." );
+				}
+			}
+		
 			if( $type == "pdo" && class_exists( "PDO" ) )
 			{
 				$pdo_driver = $args[ "pdo_driver" ] ? $args[ "pdo_driver" ] : "mysql";
@@ -62,16 +55,15 @@ abstract class controller
 			else
 			{	
 				$class = "db_" . $type;	
-				$database = new $class( $config_db[ "hostname" ]
-					, $config_db[ "username" ]
-					, $config_db[ "password" ]
-					, $config_db[ "database" ]
+				$database = new $class( $config_db[ "hostname" ],
+					$config_db[ "username" ],
+					$config_db[ "password" ],
+					$config_db[ "database" ]
 				);
 			}
-			if( $args[ "name" ] )
-			{
-				$this->registry->set( $name, $database );				
-			}
+
+			REGISTRY::set( $name, $database );				
+	
 			return $database;
 		}
 	}
@@ -87,8 +79,13 @@ abstract class controller
 		}
 		else
 		{
-			return new session( $this->registry->get('db'));
+			return new session( REGISTRY::get('db'));
 		}
+	}
+	
+	public function load_locale( $l )
+	{
+		include SITE_PATH . DIRSEP . "languages" . DIRSEP . LOCALE . DIRSEP . $l . ".php";
 	}
 
 	/**

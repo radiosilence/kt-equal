@@ -27,7 +27,7 @@
 			<?php
 			if( isset( $subview ) )
 			{
-				include SITE_ROOT . DSEP . "views" . DSEP . "subviews" . DSEP . $subview . ".php";
+				include SITE_PATH . DIRSEP . "views" . DIRSEP . "subviews" . DIRSEP . $subview . ".php";
 			}
 			?>
 			<?php echo $body ?>

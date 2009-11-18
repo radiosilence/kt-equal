@@ -7,10 +7,10 @@
 
 define( "DIRSEP", DIRECTORY_SEPARATOR );
 define( "LOCALE", "en_GB" );
-define( "SITE_ROOT", realpath( dirname( __FILE__ ) . DIRSEP . '..' . DIRSEP ) . DIRSEP );
+define( "SITE_PATH", realpath( dirname( __FILE__ ) . DIRSEP . '..' . DIRSEP ) . DIRSEP );
 define( "BASE_HREF", preg_replace( "/(.*?)\/index.php/", "$1", $_SERVER[ 'PHP_SELF' ] ) );
-define( "CONFIG_PATH", SITE_ROOT . DIRSEP . "config" );
-define( "CORE_PATH", SITE_ROOT . DIRSEP . "core" );
+define( "CONFIG_PATH", SITE_PATH . DIRSEP . "config" );
+define( "CORE_PATH", SITE_PATH . DIRSEP . "core" );
 define( "HOST", $_SERVER[ "HTTP_HOST" ] );
 
 # If this is set to 1, searching will far faster but less det
@@ -38,6 +38,6 @@ $registry = new registry;
 # Load router
 $router = new router( $registry );
 $registry->set( 'router', $router );
-$router->set_path( SITE_ROOT . 'controllers' );
+$router->set_path( SITE_PATH . 'controllers' );
 $router->delegate();
 ?>

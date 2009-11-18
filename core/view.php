@@ -8,20 +8,14 @@
 class view
 {
 	private $registry;
-	private $vars = array( 
-	);
-
-	public function __construct( $registry )
-	{
-		$this->registry = $registry;
-	}
-
+	private $vars = array();
+	
 	public function set( $varname, $value, $overwrite = false )
 	{
 		if( isset( $this->vars[ $varname ] ) == true and $overwrite == false )
 		{
 			trigger_error( 'Unable to set var `' . $varname . '`. Already set, and overwrite not allowed.', 
-					E_USER_NOTICE );
+				E_USER_NOTICE );
 			return false;
 		}
 		$this->vars[ $varname ] = $value;
@@ -34,13 +28,9 @@ class view
 		return true;
 	}
 
-	public function show( $name, $bypasslanguages = 0 )
+	public function show( $name )
 	{
-		if(!$bypasslanguages = 0 )
-		{
-			include SITE_ROOT . 'languages' . DSEP . LOCALE . '.php';
-		}
-		$path = SITE_ROOT . 'views' . DSEP . $name . '.php';
+		$path = SITE_PATH . 'views' . DIRSEP . $name . '.php';
 
 		if( file_exists( $path ) == false )
 		{
