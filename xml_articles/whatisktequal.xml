@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<articles>  
+  <article>
+    <title>About KT-EQUAL</title>
+
+    <subtitle>What is KT-EQUAL?</subtitle>
+    
+    <body>
+      KT-EQUAL is a new project designed specifically to exploit a decade of investment by EPSRC in
+      ageing and disability research. It is a complex undertaking, directly involving experts from seven
+      universities, but engaging with many more in the UK and abroad. The main goal of the KT-EQUAL consortium 
+      is Exchanging Knowledge – Extending Quality of Life. What this means is that KT-EQUAL will be pursuing 
+      many activities, working with stakeholders and facilitating knowledge exchange, in order to develop new 
+      technologies and innovations aimed at increasing the quality of life and built environment of disabled and 
+      older people. We plan to make a enduring difference by establishing an even stronger influence on those 
+      who are designing environments and products for a world which is rapidly growing older and in which more 
+      people are limited by disability or frailty. We will need to tackle those who influence specifications to 
+      which designers work, the compilers of building regulations, British Standards, planning bodies, 
+      manufacturers and marketing executives.  At the same time we have to find ways of influencing those who 
+      are concerned with the adoption of those new technologies which can assist with the care of those who are 
+      suffering from the effects of frailty, accident or illness.
+
+      By April 2009, KT-EQUAL will be eagerly recruiting staff and putting its plans into operation, by
+      the summer it will be in full-flight.  However the show is already on the road with workshops,
+      meetings and vigorous representation of the interests of older and disabled people to policy makers
+      and politicians.
+
+      KT-EQUAL is in transition from a previous project named SPARC. Through the EQUAL Network
+      and more recently SPARC (funded jointly by EPSRC and BBSRC), researchers throughout the UK
+      have become familiar with the realities of growing older, frailty and disability. They know that these
+      do not respect the boundaries of the scientific disciplines. Seeking out solutions, improving quality
+      of life and well-being, requires multidisciplinary research teams, engagement with the many
+      organisations and agencies which work with older and disabled people, and recognising the
+      preferences, knowledge and expertise of older and disabled people and their carers.
+
+      Over the last seven years, EQUAL and SPARC have introduced many new scientists to the exciting challenges 
+      of ageing research, and have secured their long-term commitment to the area. They have helped to build a superb 
+      rapport across many different communities of stakeholders and interest groups, by showing that ageing and 
+      disability research can and does make a difference to the lives of people. This has resulted in an incredible 
+      level of support, interest and encouragement in this next stage of getting research into practice. EPSRC’s EQUAL 
+      initiative showed that by keeping researchers close to research users and beneficiaries as well as ensuring that
+      they were networked to policy makers, major improvements, locally and nationally, could be achieved very quickly. 
+      EQUAL has had a significant influence on official regulations, standards, good practice and, importantly, 
+      expectations about the quality of the built environment, about the design of products and systems, and about the 
+      support which information technologies can provide to older and disabled people, in good and in poor health.
+    </body>
+    
+    <subtitle>What are SPARC, EPSRC and BBSRC?</subtitle>
+
+    <body>
+      ##SPARC
+
+      SPARC, which formally finished with the end of funding support in December 2008, is a unique venture which has aimed
+      to ensure that older people benefit from advances in science and technology. SPARC is stimulating ageing research
+      in three ways. Firstly, it has showcased the latest research findings from design, engineering and biology to all
+      stakeholders in older people’s issues and it has listened to the issues raised by practitioners and by older people
+      about the realities of ageing. Secondly, it has lobbied policy makers about the needs of older people and how these
+      needs can be met and quality of life enhanced through the pursuit and application of research. Thirdly, it has provided
+      pump-priming funds to newcomers to ageing research. SPARC awards were highly sought after as they have provided an
+      accelerated path into ageing research. SPARC was supported by a single joint grant from BBSRC and EPSRC and was managed 
+      by members of the research community.
+      <!--May want to include link to SPARC website, url: http://www.sparc.ac.uk/ -->
+
+      ##EPSRC
+
+      The Engineering and Physical Sciences Research Council.
+
+      EPSRC is the main UK government agency for funding research and training in engineering and the physical sciences, investing more
+      than £800 million a year in a broad range of subjects – from mathematics to materials science, and from information
+      technology to structural engineering.
+
+      EPSRC contributed a £1,763,400 grant to the SPARC project.
+      (Taken from the EPSRC website)
+      <!--May want to include link to EPSRC website, url: http://www.epsrc.ac.uk/ -->
+
+      ##BBSRC
+
+      The Biotechnology and Biological Sciences Research Council.
+
+      The BBSRC's mission is to promote and support, by any means, high-quality basic, strategic and applied research and related 
+      postgraduate training relating to the understanding and exploitation of biological systems.
+      
+      To advance knowledge and technology (including the promotion and support of the exploitation of research outcomes), and 
+      provide trained scientists and engineers, which meet the needs of users and beneficiaries (including the agriculture, 
+      bioprocessing, chemical, food, healthcare, pharmaceutical and other biotechnological related industries), thereby contributing 
+      to the economic competitiveness of the United Kingdom and the quality of life.
+      (Taken from the BBSRC website)
+      <!--May want to include link to BBSRC website, url http://www.bbsrc.ac.uk/ -->
+    </body>
+
+    <subtitle>Who are the main people involved?</subtitle>
+
+    <body>
+      <person>
+        <!--Insert profile image for Gail Mountain here -->
+        <name>Gail Mountain</name>
+        <email>g.a.mountain@shu.ac.uk</email>
+        <position>
+          Professor of Occupational Therapy Research
+          Sheffield Hallam University
+          Principal Director KT-EQUAL
+        </position>
+        <field>Rehabilitation &amp; Self-Management</field>
+      </person>
+
+      <person>
+        <!--Insert profile image for Leela Damordaran here -->
+        <name>Leela Damodaran</name>
+        <email>l.damodaran@lboro.ac.uk</email>
+        <position>
+          Professor of Participative Design and Change Management
+          Loughborough University
+        </position>
+        <field>Independent living</field>
+      </person>
+
+      <person>
+        <!--Insert profile image for Rachel McCrindle here -->
+        <name>Rachel McCrindle</name>
+        <email>r.j.mccrindle@reading.ac.uk</email>
+        <position>
+          Professor of Computer and Human Interaction
+          University of Reading
+        </position>
+        <field>Health &amp; wellbeing</field>
+      </person>
+
+      <person>
+        <!--Insert profile image for Catherine Ward Thomson here -->
+        <name>Catharine Ward Thompson</name>
+        <email>c.ward-thompson@eca.ac.uk</email>
+        <position>
+          Research Professor of Landscape Architecture,
+          Edinburgh College of Art &amp; University of Edinburgh
+        </position>
+        <field>Built environment</field>
+      </person>
+
+      <person>
+        <!--Insert profile image for John Clarkson here -->
+        <name>John Clarkson</name>
+        <email>pjc10@eng.cam.ac.uk</email>
+        <position>
+          Professor of Engineering Design University of Cambridge
+          Director KT-EQUAL
+        </position>
+        <field>Inclusive design</field>
+      </person>
+
+      <person>
+        <!--Insert profile image for Christopher Eccleston here -->
+        <name>Christopher Eccleston</name>
+        <email>c.eccleston@bath.ac.uk</email>
+        <position>
+          Professor of Psychology
+          Director, Centre Pain Research
+          University of Bath
+        </position>
+        <field>Self-management</field>
+      </person>
+
+      <person>
+        <!--Insert profile image for Trevor Cox here -->
+        <name>Trevor Cox</name>
+        <email>t.j.cox@salford.ac.uk</email>
+        <position>
+          Professor of Acoustic Engineering University of Salford
+          EPSRC Senior Media Fellow
+        </position>
+        <field>Developing research capacity</field>
+      </person>
+
+      <person>
+        <!--Insert profile image for Peter Lansley here -->
+        <name>Peter Lansley</name>
+        <email>p.r.lansley@reading.ac.uk</email>
+        <position>
+          Professor of Construction Management
+          Continuity Director KT-EQUAL
+        </position>
+      </person>
+
+      <person>
+        <!--Insert profile image for Verity Smith here -->
+        <name>Verity Smith</name>
+        <email>h.v.smith@reading.ac.uk</email>
+        <position>
+          University of Reading
+          Continuity Coordinator KT-EQUAL
+        </position>
+      </person>
+    </body>
+    <subtitle>Contact Information</subtitle>
+
+    <body>
+      <contact>
+        ##For media enquiries please contact
+        
+        <name>Dr Lucy Chappell, Publicity Officer, SPARC</name>
+        <email>l.chappell@reading.ac.uk</email>
+        
+        <address>
+          URS Building
+          The University of Reading
+          Whiteknights
+          PO Box 219
+          Reading RG6 6AW
+          United Kingdom
+        </address>
+        
+        <telephone>+44 118 378 7179</telephone>
+        <telephone>+44 118 378 7391</telephone>
+        <fax>+44 118 931 3856</fax>
+      </contact>
+
+      <contact>
+        ##For design and engineering related enquiries please contact
+        
+        <name>Professor Peter Lansley, Director, SPARC</name>
+        <email>p.r.lansley@reading.ac.uk</email>
+
+        <name>Miss Verity Smith, Co-ordinator, SPARC</name>
+        <email>h.v.smith@reading.ac.uk</email>
+
+        <address>
+          School of Construction Management and Engineering
+          URS Building
+          The University of Reading
+          Whiteknights
+          PO Box 219
+          Reading RG6 6AW
+          United Kingdom
+        </address>
+
+        <telephone>+44 118 378 7179</telephone>
+        <fax>+44 118 931 3856</fax>
+      </contact>
+
+      <contact>
+        ##For biological and biotechnology related enquiries please contact
+        
+        <name>Dr Richard Faragher, Director, SPARC </name>
+        <email>r.g.a.faragher@brighton.ac.uk</email>
+
+        <address>
+          School of Pharmacy and Biomolecular Science
+          University of Brighton
+          Room 807, 8th Floor
+          Cockcroft Building
+          Moulescoomb
+          Brighton BN2 4GJ
+          United Kingdom
+        </address>
+
+        <telephone>+44 1273 642124</telephone>
+        <fax>+44 1273 679333</fax>
+      </contact>
+
+      <contact>
+        ##Research Council Representatives
+        
+        <name>Dr Louisa Jenkin</name>
+        <email>louisa.jenkin@bbsrc.ac.uk</email>
+
+        <address>
+          BBSRC
+          Polaris House
+          North Star Avenue
+          Swindon SN2 1UH
+          United Kingdom
+        </address>
+
+        <name>Ms Linda Sayers</name>
+        <email>linda.sayers@epsrc.ac.uk</email>
+
+        <address>
+          EPSRC
+          Polaris House
+          North Star Avenue
+          Swindon SN2 1ET
+          United Kingdom
+        </address>
+      </contact>
+
+      For general enquiries or if in doubt please contact Verity Smith at the Reading office.
+
+    </body>
+  </article>
+</articles>
+
