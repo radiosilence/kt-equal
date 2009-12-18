@@ -23,7 +23,7 @@ class controller_article extends controller
 		$template->set( "title", utf8_encode( $article[ "title" ] ));
 		$p = new markdown_parser;
 		$s = new markdown_smartypantstypographer;
-		include( SITE_ROOT . DSEP . "definitions" . DSEP . "article.php" );
+		include( SITE_PATH . DIRSEP . "definitions" . DIRSEP . "article.php" );
 		
 		$body_text = $p->transform( $s->transform( $article[ "body" ] ) );
 		$article_info = sprintf( HTML_ARTICLE_INFO, $article[ "author" ], $article[ "date" ], $article[ "publisher" ] );
