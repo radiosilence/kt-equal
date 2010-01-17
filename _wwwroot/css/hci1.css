@@ -4,7 +4,17 @@ body {
 }
 
 body, div, p, input {
-	font-family:		"Helvetica LT Std", Helvetica, HelveticaNeue, Arial;
+	font-family:		Helvetica, Arial, sans-serif;
+}
+
+a:active {
+	outline:		none;
+	-moz-outline-style:	none;
+}
+
+a:focus {
+	outline:		none;
+	-moz-outline-style:	none;
 }
 
 #header {
@@ -13,11 +23,17 @@ body, div, p, input {
 	background-repeat:	repeat-x;
 	background-position:	bottom;
 	overflow:		hidden;
+	width:			100%;
+	height:			142px;
 }
 
 #logo img {
 	margin-left: 		-42px;
 	border:			0px;
+}
+
+#search {
+	margin-bottom: 		46px;
 }
 
 #search input {
@@ -37,6 +53,8 @@ body, div, p, input {
 	background-repeat:	no-repeat;
 	background-position:	right;
 	text-align:		right;
+	width:			172px;
+	height:			23px;
 }
 
 #infobox {
@@ -64,9 +82,15 @@ body, div, p, input {
 	font-weight:		normal;
 }
 
+#content {
+	overflow:		hidden;
+	margin-bottom:		20px;
+}
+
 #content h1 {
 	font-size:		36pt;
 	letter-spacing:		-2px;
+	display: block;
 }
 
 #content h2 {
@@ -79,4 +103,99 @@ body, div, p, input {
 #content p {
 	font-size:		11pt;
 	text-align:		justify;
+}
+
+#footer  {
+	background-color:	#111111;
+	overflow:		hidden;
+	width:			100%;
+	padding-top:		20px;
+}
+
+#footer a {
+	font-size:		11pt;
+	color:			#ffffff;
+	text-decoration:	none;
+}
+
+#footer ul {
+	margin-left:		0px;
+	padding-left:		0px;
+	list-style-type:	none; 
+}
+
+/* Navigation tabs */
+
+#nav ul li, #nav ul li a {
+	list-style-type:	none; 
+	float: left;
+}
+
+#nav ul li a {
+	text-decoration:	none;
+	text-indent:		-9999px;
+}
+#nav ul li #n_home {
+	display:		block;
+	width:			120px;
+	height:			37px;
+	background-image:	url( '../img/tabs/home_inactive.png' ) ;
+}
+#nav ul li #n_home_active {
+	display:		block;
+	width:			120px;
+	height:			63px;
+	background-image:	url( '../img/tabs/home_active.png' ) ;
+}
+
+#nav ul li #n_about_us {
+	display:		block;
+	width:			120px;
+	height:			37px;
+	background-image:	url( '../img/tabs/about_us_inactive.png' ) ;
+}
+#nav ul li #n_about_us_active {
+	display:		block;
+	width:			120px;
+	height:			63px;
+	background-image:	url( '../img/tabs/about_us_active.png' ) ;
+}
+
+#nav ul li #n_projects {
+	display:		block;
+	width:			120px;
+	height:			37px;
+	background-image:	url( '../img/tabs/projects_inactive.png' ) ;
+}
+#nav ul li #n_projects_active {
+	display:		block;
+	width:			120px;
+	height:			63px;
+	background-image:	url( '../img/tabs/projects_active.png' ) ;
+}
+
+#nav ul li #n_get_involved {
+	display:		block;
+	width:			120px;
+	height:			37px;
+	background-image:	url( '../img/tabs/get_involved_inactive.png' ) ;
+}
+#nav ul li #n_get_involved_active {
+	display:		block;
+	width:			120px;
+	height:			63px;
+	background-image:	url( '../img/tabs/get_involved_active.png' ) ;
+}
+
+#nav ul li #n_help {
+	display:		block;
+	width:			120px;
+	height:			37px;
+	background-image:	url( '../img/tabs/help_inactive.png' ) ;
+}
+#nav ul li #n_help_active {
+	display:		block;
+	width:			120px;
+	height:			63px;
+	background-image:	url( '../img/tabs/help_active.png' ) ;
 }
