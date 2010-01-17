@@ -126,6 +126,10 @@ a:focus {
 
 /* Navigation tabs */
 
+#nav {
+	padding-left: 60px;
+}
+
 #nav ul li, #nav ul li a {
 	list-style-type:	none; 
 	float: left;
@@ -135,13 +139,15 @@ a:focus {
 	text-decoration:	none;
 	text-indent:		-9999px;
 }
+
 #nav ul li #n_home {
 	display:		block;
 	width:			120px;
 	height:			37px;
 	background-image:	url( '../img/tabs/home_inactive.png' ) ;
 }
-#nav ul li #n_home_active {
+
+body#home #nav ul li #n_home {
 	display:		block;
 	width:			120px;
 	height:			63px;
@@ -154,7 +160,7 @@ a:focus {
 	height:			37px;
 	background-image:	url( '../img/tabs/about_us_inactive.png' ) ;
 }
-#nav ul li #n_about_us_active {
+body#about_us #nav ul li #n_about_us {
 	display:		block;
 	width:			120px;
 	height:			63px;
@@ -167,7 +173,7 @@ a:focus {
 	height:			37px;
 	background-image:	url( '../img/tabs/projects_inactive.png' ) ;
 }
-#nav ul li #n_projects_active {
+body#projects #nav ul li #n_projects {
 	display:		block;
 	width:			120px;
 	height:			63px;
@@ -180,7 +186,7 @@ a:focus {
 	height:			37px;
 	background-image:	url( '../img/tabs/get_involved_inactive.png' ) ;
 }
-#nav ul li #n_get_involved_active {
+body#get_involved #nav ul li #n_get_involved {
 	display:		block;
 	width:			120px;
 	height:			63px;
@@ -193,7 +199,7 @@ a:focus {
 	height:			37px;
 	background-image:	url( '../img/tabs/help_inactive.png' ) ;
 }
-#nav ul li #n_help_active {
+body#help #nav ul li #n_help {
 	display:		block;
 	width:			120px;
 	height:			63px;

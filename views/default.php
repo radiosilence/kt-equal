@@ -7,7 +7,7 @@
 		<link rel="stylesheet" type="text/css" href="css/hci1.css" />
 		<script src="js_lib/jquery-1.4.css"></script>
 	</head>
-	<body>
+	<body id="<?php echo $page?>">
 		<div id="header">
 			<div class="container_12">
 				<div class="grid_3" id="logo">
@@ -19,17 +19,25 @@
 					</div>
 					<div id="nav">
 						<ul>
-							<li><a href="#" id="n_home_active">Home</a></li>
-							<li><a href="#" id="n_about_us">About Us</a></li>
-							<li><a href="#" id="n_projects">Projects</a></li>
-							<li><a href="#" id="n_get_involved">Get Involved</a></li>
-							<li><a href="#" id="n_help">Help</a></li>
+							<?php foreach( $navs as $n => $nav ): ?>
+							<li><a href="<?php echo $n?>" id="n_<?php echo $n?>"><?php echo $nav?></a></li>
+							<?php endforeach; ?>
 						</ul>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div id="main">
+			<div class="container_12">
+				<div class="grid_12" id="subnav">
+					<ul>
+						<?php foreach( $subnavs as $n => $nav ): ?>
+							<li><a href="<?php echo $n?>" id="sn_<?php echo $n?>"><?php echo $nav?></a></li>
+							<?php endforeach; ?>	
+					</ul>
+				</div>
+			</div>
+			<br/>
 			<div class="container_12" id="infobox">
 				<div class="grid_4">
 					<img src="cnt/img/placeholder.jpg" />
