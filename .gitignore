@@ -2,3 +2,4 @@
 config/*.php
 !config/*sample.php
 core/*
+_wwwroot/forum/*

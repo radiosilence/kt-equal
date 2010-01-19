@@ -28,7 +28,16 @@ class model_section extends model
 			":name" => $name
 		));
 		
-		return $sth->fetch();
+		if( $sth->rowCount() == 1 )
+		{
+			$res = $sth->fetch();
+			$this->load( $res[ "id" ] );
+			return 1;		
+		}
+		else
+		{
+			return 0;
+		}
 	}
 	
 	public function list_pages()
@@ -41,12 +50,12 @@ class model_section extends model
 			WHERE		section = :id
 			ORDER BY	pages.order ASC
 		" );
-		
+
 		$sth->execute( array(
 			":id" => $this->_id
 		));
 		
-		return $sth->fetchAll();
+		return $sth->fetchAll( PDO::FETCH_ASSOC );
 		
 	}
 	
@@ -62,10 +71,21 @@ class model_section extends model
 		
 		$t->table( "sections", array(
 			"id"		=> $t->primary_key	(),
-			"title"		=> $t->char_field	(),
-			"name"		=> $t->char_field	(),
-			"image"		=> $t->char_field	(),
-			"introduction"	=> $t->text_field	()
+			"title"		=> $t->char_field	( "Title" ),
+			"name"		=> $t->char_field	( "Name" ),
+			"image"		=> $t->char_field	( "Section Introduction Image URL" ),
+			"introduction"	=> $t->text_field	( "Introduction Box Text" )
+		));
+	}
+	
+	public function default_form()
+	{
+		return array(
+			"Section" => array(
+				"title" => "title",
+				"name",
+				"image",
+				"introduction"
 		));
 	}
 }

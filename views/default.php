@@ -5,7 +5,7 @@
 		<title><?php echo $title?> | KT-EQUAL</title>
 		<link rel="stylesheet" type="text/css" href="css_lib/960.css" />
 		<link rel="stylesheet" type="text/css" href="css/hci1.css" />
-		<script src="js_lib/jquery-1.4.css"></script>
+		<script src="js_lib/jquery-1.4.js"></script>
 	</head>
 	<body id="<?php echo $page?>">
 		<div id="header">
@@ -31,26 +31,18 @@
 			<div class="container_12">
 				<div class="grid_12" id="subnav">
 					<ul>
-						<?php foreach( $subnavs as $n => $nav ): ?>
-							<li><a href="<?php echo $n?>" id="sn_<?php echo $n?>"><?php echo $nav?></a></li>
+						<?php foreach( $subnavs as $k => $n ): ?>
+							<li><a href="<?php echo $n[ "url" ]?>" id="sn_<?php echo $k?>"><?php echo $n[ "title" ]?></a></li>
 							<?php endforeach; ?>	
 					</ul>
 				</div>
 			</div>
-			<br/>
 			<div class="container_12" id="infobox">
 				<div class="grid_4">
-					<img src="cnt/img/placeholder.jpg" />
+					<img src="<?php echo $s_img?>" />
 				</div>
 				<div class="grid_8">
-					<h1>Some shit about this section</h1>
-					<p>Maybe a paragraph about helping old people.</p>
-					<ul>
-						<li>Bullet points</li>
-						<li>Bullet points</li>
-						<li>Bullet points</li>
-					</ul>
-					<p>Look how amazingly large this text is and this is good because people can read it. Especially the clients of our site.</p>
+					<?php echo $s_intro?>
 				</div>
 			</div>
 			<div class="container_12" id="content">

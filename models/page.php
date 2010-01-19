@@ -25,12 +25,12 @@ class model_page extends model
 		
 		$t->table( "pages", array(
 			"id"		=> $t->primary_key	(),
-			"title"		=> $t->char_field	(),
-			"url"		=> $t->char_field	(),
-			"content"	=> $t->text_field	(),
-			"last_modified"	=> $t->datetime_field	(),
-			"order"		=> $t->integer_field	(),
-			"layout"	=> $t->char_field	()
+			"section"	=> $t->foreign_key	( "Section ID", "section", "select" ),
+			"title"		=> $t->char_field	( "Title" ),
+			"url"		=> $t->char_field	( "URL" ),
+			"content"	=> $t->text_field	( "Optional Content" ),
+			"last_modified"	=> $t->datetime_field	( "Date of Last Modification" ),
+			"order"		=> $t->integer_field	( "Menu Order" ),
 		));
 	}
 }

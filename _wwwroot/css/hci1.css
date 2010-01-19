@@ -7,6 +7,9 @@ body, div, p, input {
 	font-family:		Helvetica, Arial, sans-serif;
 }
 
+a {
+	color: #005D6A;
+}
 a:active {
 	outline:		none;
 	-moz-outline-style:	none;
@@ -57,7 +60,27 @@ a:focus {
 	height:			23px;
 }
 
+#subnav {
+	clear: both;
+	margin-bottom: 		16px;
+	margin-top: 		16px;;
+}
+
+#subnav ul {
+	margin: 		0px;
+	padding: 		0px;
+}
+#subnav ul li {
+	float:			left;
+	list-style-type:	none;
+	display: 		block;
+	padding-left: 		10px;
+	margin-left: 		0px;
+	
+}
+
 #infobox {
+	clear: both;
 	border:			1px solid #d4e8ea;
 	margin-top:		21px;
 	overflow:		hidden;
@@ -102,7 +125,7 @@ a:focus {
 
 #content p {
 	font-size:		11pt;
-	text-align:		justify;
+	text-align:		left;
 }
 
 #footer  {
@@ -154,13 +177,13 @@ body#home #nav ul li #n_home {
 	background-image:	url( '../img/tabs/home_active.png' ) ;
 }
 
-#nav ul li #n_about_us {
+#nav ul li #n_about-us {
 	display:		block;
 	width:			120px;
 	height:			37px;
 	background-image:	url( '../img/tabs/about_us_inactive.png' ) ;
 }
-body#about_us #nav ul li #n_about_us {
+body#about-us #nav ul li #n_about-us {
 	display:		block;
 	width:			120px;
 	height:			63px;
@@ -180,13 +203,13 @@ body#projects #nav ul li #n_projects {
 	background-image:	url( '../img/tabs/projects_active.png' ) ;
 }
 
-#nav ul li #n_get_involved {
+#nav ul li #n_get-involved {
 	display:		block;
 	width:			120px;
 	height:			37px;
 	background-image:	url( '../img/tabs/get_involved_inactive.png' ) ;
 }
-body#get_involved #nav ul li #n_get_involved {
+body#get-involved #nav ul li #n_get-involved {
 	display:		block;
 	width:			120px;
 	height:			63px;

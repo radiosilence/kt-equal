@@ -13,6 +13,7 @@ define( "CONFIG_PATH", SITE_PATH . DIRSEP . "config" );
 define( "CORE_PATH", SITE_PATH . DIRSEP . "core" );
 define( "HOST", $_SERVER[ "HTTP_HOST" ] );
 
+define( "DEBUG", 1 );
 # If this is set to 1, searching will far faster but less det
 # -ailed. (Using mysql full text natural searching). This for
 # if there are many articles.
@@ -20,18 +21,30 @@ define( "QUICK_SEARCH", 0 );
 
 function __autoload( $class_name )
 {
-	$filename = str_replace( "_", DIRSEP, strtolower( $class_name ) ) . '.php';
-	$file = CORE_PATH . DIRSEP . $filename;
-	
-	if( !file_exists( $file ))
+	if( strtolower( substr( $class_name, 0, 5 ) ) == "model"
+		 && strtolower( $class_name ) != "model" )
 	{
-		die( "Could not find " . $file . "!\n" );
+		$class_path = SITE_PATH . "models";
+		$class_name = substr( $class_name, 5 );
+	}
+	else
+	{
+		$class_path = CORE_PATH;
+	}
+	
+	$filename = str_replace( "_", DIRSEP, strtolower( $class_name ) ) . '.php';
+	
+	if( file_exists( $class_path . DIRSEP . $filename ))
+	{
+		include ( $class_path . DIRSEP . $filename );
+	}
+	else
+	{
+		die( "Could not find " . $class_path . DIRSEP . $filename . "!\n" );
 		return false;
 	}
 
-	include ( $file );
 }
-
 # System happening
 $registry = new registry;
 
