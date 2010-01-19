@@ -2,6 +2,8 @@
 
 class model_section extends model
 {
+	public $pages = array();
+	
 	public function __construct( $db, $id = 0 )
 	{
 		$this->db = $db;
@@ -10,7 +12,13 @@ class model_section extends model
 		if( $id > 0 )
 		{
 			$this->load( $id );
-		}	
+		}
+	}
+	
+	public function default_page()
+	{
+		$this->get_pages();
+		return $this->pages[0][ "url" ];
 	}
 	
 	public function load_from_name( $name )
@@ -40,22 +48,27 @@ class model_section extends model
 		}
 	}
 	
-	public function list_pages()
+	public function get_pages()
 	{
-		$db = $this->db;
+		if( count( $this->pages == 0 ) )
+		{
+			$db = $this->db;
+			
+			$sth = $db->prepare( "
+				SELECT 		title, url
+				FROM		pages
+				WHERE		section = :id
+				ORDER BY	pages.order ASC
+			" );
+	
+			$sth->execute( array(
+				":id" => $this->_id
+			));
+			
+			$this->pages = $sth->fetchAll( PDO::FETCH_ASSOC );
+		}
 		
-		$sth = $db->prepare( "
-			SELECT 		title, url
-			FROM		pages
-			WHERE		section = :id
-			ORDER BY	pages.order ASC
-		" );
-
-		$sth->execute( array(
-			":id" => $this->_id
-		));
-		
-		return $sth->fetchAll( PDO::FETCH_ASSOC );
+		return $this->pages;
 		
 	}
 	

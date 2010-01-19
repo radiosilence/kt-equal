@@ -1,16 +1,25 @@
 <?php
+
 class controller_index extends controller
 {
 	public function index( $args )
 	{
-		$db = $this->database();
+		$db 	= $this->database();
 
-		$s = new model_section( $db );
+		$s 	= new model_section( $db );
+		$p	= new model_page( $db );
+		$md 	= new markdown_parser();
 		
-		$rt = explode( "/", $args[ "_url" ] );
+		$rt 	= explode( "/", $args[ "_url" ] );
 		
 		$s->load_from_name( strlen( $rt[ 0 ] ) > 0 ? $rt[ 0 ] : "home" );
-				
+		
+		array_shift( $rt );
+		$rt = implode( "/", $rt );
+		
+		$p->load_from_url( strlen( $rt ) > 0 ? $args[ "_url" ] : $s->default_page() );
+		
+			
 		$navs = array( 
 			"home" 		=> "Home",
 			"about-us" 	=> "About Us",
@@ -19,18 +28,16 @@ class controller_index extends controller
 			"help" 		=> "Help",
 		);
 		
-		$subnavs = $s->list_pages();
-		
-		$md = new markdown_parser();
+		$subnavs = $s->get_pages();
 		
 		$tpl = new view( $this->registry );
-		$tpl->set( "title", "KT-EQUAL" );
+		$tpl->set( "title", $p->title );
 		$tpl->set( "navs", $navs );
 		$tpl->set( "subnavs", $subnavs );
 		$tpl->set( "page", $s->name );
+		$tpl->set( "content", $p->is_markdown ? array( "markdown" => $md->transform( $p->content )) : array( "html" => $p->content ));
 		$tpl->set( "s_intro", $md->transform( $s->introduction ));
 		$tpl->set( "s_img", $s->image );
-		$tpl->set( "subview", "home_body" );
 		$tpl->show( "default" );
 	}
 }

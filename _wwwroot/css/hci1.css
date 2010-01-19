@@ -1,6 +1,7 @@
 body {
 	margin:			0px;
 	padding:		0px;
+	background-color:	#111111;
 }
 
 body, div, p, input {
@@ -8,7 +9,7 @@ body, div, p, input {
 }
 
 a {
-	color: #005D6A;
+	color:			#005D6A;
 }
 a:active {
 	outline:		none;
@@ -63,20 +64,20 @@ a:focus {
 #subnav {
 	clear: both;
 	margin-bottom: 		16px;
-	margin-top: 		16px;;
+	margin-top: 		16px;
+	font-weight:		bold;
+	font-size:		11pt;
+	color: 			#005D6A;
 }
 
-#subnav ul {
-	margin: 		0px;
-	padding: 		0px;
+#subnav a {
+	font-weight:		bold;
+	text-decoration:	none;
 }
-#subnav ul li {
-	float:			left;
-	list-style-type:	none;
-	display: 		block;
-	padding-left: 		10px;
-	margin-left: 		0px;
-	
+
+#main {
+	background-color:	white;
+	padding-bottom:		50px;
 }
 
 #infobox {
