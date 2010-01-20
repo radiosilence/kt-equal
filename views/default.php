@@ -6,6 +6,7 @@
 		<link rel="stylesheet" type="text/css" href="css_lib/960.css" />
 		<link rel="stylesheet" type="text/css" href="css/hci1.css" />
 		<script src="js_lib/jquery-1.4.js"></script>
+		<script src="js/home.js"></script>
 	</head>
 	<body id="<?php echo $page?>">
 		<div id="header">
@@ -14,8 +15,8 @@
 					<a href="<?php echo BASE_HREF ?>"><img src="img/logo.png" alt="Logo" title="KT-EQUAL" /></a>
 				</div>
 				<div class="grid_9" id="tabs">
-					<div class="grid_3 prefix_6" id="search">
-						<input type="text" name="search" value="Search"/>
+					<div  id="search" class="grid_4 prefix_6">
+						<input type="text" class="search_inactive" id="article_search" name="article_search" value="Search"/>
 					</div>
 					<div id="nav">
 						<ul>
@@ -28,6 +29,9 @@
 			</div>
 		</div>
 		<div id="main">
+			<div class="container_12">
+				<div id="results" class="grid_3 prefix_6"></div>
+			</div>
 			<div class="container_12" id="infobox">
 				<div class="grid_4">
 					<img src="<?php echo $s_img?>" />

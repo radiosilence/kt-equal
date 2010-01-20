@@ -26,7 +26,7 @@ class controller_projects extends controller
 			$a = new model_article( $db, $args[ "article" ] );
 			
 			$tpl->set( "content", array( "markdown" => $md->transform( $a->body ) ) );
-			$tpl->set( "title", $subtitle . " Projects" );
+			$tpl->set( "title", $a->title );
 		}
 		else
 		{
