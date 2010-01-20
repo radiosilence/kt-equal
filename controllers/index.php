@@ -17,20 +17,16 @@ class controller_index extends controller
 		array_shift( $rt );
 		$rt = implode( "/", $rt );
 		
-		$p->load_from_url( strlen( $rt ) > 0 ? $args[ "_url" ] : $s->default_page() );
+		$cur_url = strlen( $rt ) > 0 ? $args[ "_url" ] : $s->default_page();
 		
-			
-		$navs = array( 
-			"home" 		=> "Home",
-			"about-us" 	=> "About Us",
-			"projects" 	=> "Projects",
-			"get-involved" 	=> "Get Involved",
-			"help" 		=> "Help",
-		);
+		$p->load_from_url( $cur_url );
+		
+		$navs = MODEL_SECTION::get_sections( $db );
 		
 		$subnavs = $s->get_pages();
 		
 		$tpl = new view( $this->registry );
+		$tpl->set( "cur_url", $cur_url );
 		$tpl->set( "title", $p->title );
 		$tpl->set( "navs", $navs );
 		$tpl->set( "subnavs", $subnavs );

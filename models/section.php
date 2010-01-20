@@ -87,7 +87,8 @@ class model_section extends model
 			"title"		=> $t->char_field	( "Title" ),
 			"name"		=> $t->char_field	( "Name" ),
 			"image"		=> $t->char_field	( "Section Introduction Image URL" ),
-			"introduction"	=> $t->text_field	( "Introduction Box Text" )
+			"introduction"	=> $t->text_field	( "Introduction Box Text" ),
+			"order"		=> $t->integer_field	( "Order" )
 		));
 	}
 	
@@ -100,6 +101,23 @@ class model_section extends model
 				"image",
 				"introduction"
 		));
+	}
+	
+	public static function get_sections( $db )
+	{
+		$sth = $db->prepare( "
+			SELECT  	name, title
+			FROM		sections
+			ORDER BY	`order` ASC
+		");
+		
+		$sth->execute();
+		foreach( $sth->fetchAll( PDO::FETCH_ASSOC ) as $v )
+		{
+			$return[ $v[ "name" ] ] = $v[ "title" ];
+		}
+		
+		return $return;
 	}
 }
 

@@ -28,19 +28,19 @@
 			</div>
 		</div>
 		<div id="main">
-			<div class="container_12">
-				<div class="grid_12" id="subnav">
-						<?php $tmp = 1; foreach( $subnavs as $k => $n ): ?>
-							<a href="<?php echo $n[ "url" ]?>" id="sn_<?php echo $k?>"><?php echo $n[ "title" ]?></a><?php echo ( $tmp++  < count( $subnavs ) ? "&nbsp;&nbsp;&bull;&nbsp;&nbsp;" : null );?>
-						<?php endforeach; ?>	
-				</div>
-			</div>
 			<div class="container_12" id="infobox">
 				<div class="grid_4">
 					<img src="<?php echo $s_img?>" />
 				</div>
 				<div class="grid_8">
 					<?php echo $s_intro?>
+				</div>
+			</div>
+			<div class="container_12">
+				<div class="grid_12" id="subnav">
+						<?php $tmp = 1; foreach( $subnavs as $k => $n ): ?>
+							<a href="<?php echo $n[ "url" ]?>" id="sn_<?php echo $k?>"<?php echo ( $cur_url == $n[ "url" ] ? " class=\"active\"" : null )?>><?php echo $n[ "title" ]?></a><?php echo ( $tmp++  < count( $subnavs ) ? "&nbsp;&nbsp;&bull;&nbsp;&nbsp;" : null );?>
+						<?php endforeach; ?>	
 				</div>
 			</div>
 			<div class="container_12" id="content">
@@ -50,7 +50,9 @@
 							<h1><?php echo $title?></h1>
 						</hgroup>
 					</div>
-					<?php if( $content[ "markdown" ] ): ?>
+					<?php if( $include ):
+						include $include; ?>
+					<?php elseif( $content[ "markdown" ] ): ?>
 					<div class="grid_12">
 						<?php echo $content[ "markdown" ]?>
 					</div>
@@ -65,57 +67,30 @@
 			<div class="container_12">
 				<div class="grid_3">
 					<ul>
-						<li><a href="#">Site Map</a></li>
-						<li><a href="#">Contact Us!</a></li>
-						<li><a href="#">Growing Opportunities</a></li>
-						<li><a href="#">Why we are so boring</a></li>
-						<li><a href="#">Administrative Section</a></li>
-						<li><a href="#">Log In</a></li>
-						<li><a href="#">Yanqui UXO</a></li>
-						<li><a href="#">Godpseed You! Black emperorr</a></li>
-						<li><a href="#">Merciless</a></li>
+						<li><a href="home">News</a></li>
 					</ul>
 				</div>
 				<div class="grid_3">
 					<ul>
-						<li><a href="#">Site Map</a></li>
-						<li><a href="#">Contact Us!</a></li>
-						<li><a href="#">Growing Opportunities</a></li>
-						<li><a href="#">Why we are so boring</a></li>
-						<li><a href="#">Administrative Section</a></li>
-						<li><a href="#">Log In</a></li>
-						<li><a href="#">Yanqui UXO</a></li>
-						<li><a href="#">Godpseed You! Black emperorr</a></li>
-						<li><a href="#">Merciless</a></li>
+						<li><a href="about-us/other-contact-information.html">Contact Us</a></li>
 					</ul>
 				</div>
 				<div class="grid_3">
 					<ul>
-						<li><a href="#">Site Map</a></li>
-						<li><a href="#">Contact Us!</a></li>
-						<li><a href="#">Growing Opportunities</a></li>
-						<li><a href="#">Why we are so boring</a></li>
-						<li><a href="#">Administrative Section</a></li>
-						<li><a href="#">Log In</a></li>
-						<li><a href="#">Yanqui UXO</a></li>
-						<li><a href="#">Godpseed You! Black emperorr</a></li>
-						<li><a href="#">Merciless</a></li>
+						<li><a href="mailto:webmaster@kt-equal.org.uk">E-Mail Webmaster</a></li>
 					</ul>
 				</div>
 				<div class="grid_3">
 					<ul>
-						<li><a href="#">Site Map</a></li>
-						<li><a href="#">Contact Us!</a></li>
-						<li><a href="#">Growing Opportunities</a></li>
-						<li><a href="#">Why we are so boring</a></li>
-						<li><a href="#">Administrative Section</a></li>
-						<li><a href="#">Log In</a></li>
-						<li><a href="#">Yanqui UXO</a></li>
-						<li><a href="#">Godpseed You! Black emperorr</a></li>
-						<li><a href="#">Merciless</a></li>
+						<li><a href="help/site-map.html">Site Map</a></li>
 					</ul>
 				</div>
-			</div>
+			</div><br/>
+			
+			<div class="container_12">
+				<div class="grid_12" id="copyleft">
+					Website &copy; KT-EQUAL 2010, Property of James E. Cleveland, Karl Sainz-Martinez &amp; Richard Hughes
+				</div>
 		</div>
 	</body>
 </html>
